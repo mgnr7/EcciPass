@@ -1,10 +1,19 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Navigate } from "react-router-dom";
+import { login } from "../../Slices/userSlice";
 
-function Login() {
+export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  return (
+  const userIsLoggedIn = useSelector((state) => state.user.isLoggedIn);
+
+  const dispatch = useDispatch();
+
+  return userIsLoggedIn ? (
+    <Navigate to="/" />
+  ) : (
     <div className="flex items-center justify-center h-screen">
       <div className="bg-ucr-light-blue h-2/3 rounded-lg p-4">
         <div className="text-center">
@@ -55,6 +64,9 @@ function Login() {
             type="button"
             data-mdb-ripple="true"
             data-mdb-ripple-color="light"
+            onClick={() => {
+              dispatch(login());
+            }}
           >
             Iniciar Sesión
           </button>
@@ -63,5 +75,3 @@ function Login() {
     </div>
   );
 }
-
-export default Login;
