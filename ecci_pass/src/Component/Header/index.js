@@ -5,9 +5,7 @@ function Header() {
   return (
     <nav className="bg-ucr-light-blue px-2 sm:px-4 py-2.5">
       <div className="container flex flex-wrap justify-between items-center mx-auto">
-        <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
-          ECCIPASS
-        </span>
+        <span className="self-center text-xl font-semibold">ECCIPASS</span>
         <div className="flow-root w-96 h-1/2 bg-ucr-yellow border-black border-2 rounded-md">
           <div className="float-left mt-1 mb-1">
             <div className="border-black border-t-0 border-l-0 border-r-2 border-b-0">
@@ -25,7 +23,7 @@ function Header() {
           </div>
         </div>
 
-        <div className="hidden justify-between items-center w-full md:flex md:w-auto md:order-1 ">
+        <div className="flex flex-row justify-between w-full md:flex md:w-auto md:order-1 ">
           <div className=" py-2 pr-5 pl-3">
             {/*Modificar Link para que rediriga a Settings cuando este implementada la pantalla*/}
             <Link to="/login">
