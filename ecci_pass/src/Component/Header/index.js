@@ -1,7 +1,12 @@
 import { FiSettings, FiUser } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
+import { useDispatch } from "react-redux";
+import { logout } from "../../Slices/userSlice";
+
 function Header() {
+  const dispatch = useDispatch();
+
   return (
     <nav className="bg-ucr-light-blue px-2 sm:px-4 py-2.5">
       <div className="container flex flex-wrap justify-between items-center mx-auto">
@@ -26,13 +31,28 @@ function Header() {
         <div className="flex flex-row justify-between w-full md:flex md:w-auto md:order-1 ">
           <div className=" py-2 pr-5 pl-3">
             {/*Modificar Link para que rediriga a Settings cuando este implementada la pantalla*/}
-            <Link to="/login">
+            <Link
+              to="/login"
+              className="transition duration-150 hover:text-slate-600 ease-in-out"
+              data-bs-toggle="tooltip"
+              title="Editar Perfil"
+            >
               <FiSettings size={25} />
             </Link>
           </div>
           <div className=" py-2 pl-5">
-            <Link to="/login">
-              <FiUser size={25} />
+            <Link
+              to="/login"
+              className="transition duration-150 hover:text-slate-600 ease-in-out"
+              data-bs-toggle="tooltip"
+              title="Cerrar Sesión"
+            >
+              <FiUser
+                size={25}
+                onClick={() => {
+                  dispatch(logout());
+                }}
+              />
             </Link>
           </div>
         </div>
