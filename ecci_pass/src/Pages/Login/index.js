@@ -2,14 +2,12 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import { login } from "../../Slices/userSlice";
-//import { register } from "../../Slices/registerSlice";
 
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const userIsLoggedIn = useSelector((state) => state.user.isLoggedIn);
-  //const userRegister = useSelector((state) => state.user.isRegisterIn);
 
   const dispatch = useDispatch();
 

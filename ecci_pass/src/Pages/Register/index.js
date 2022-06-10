@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
-import { registered } from "../../Slices/registerSlice";
+import { login } from "../../Slices/userSlice";
 
 export default function Register() {
   const [username, setUsername] = useState("");
@@ -11,25 +11,25 @@ export default function Register() {
   const [carnet, setCarnet] = useState("");
   const [id, setId] = useState("");
   const [mail, setMail] = useState("");
-  //const [userType, setUserType] = useState("");
-  //const [userPicture, setPicture] = useState("");
+  const [userType, setUserType] = useState("");
+  const [userPicture, setPicture] = useState("");
 
   //TODO- Agregar seleccionar tipo cuenta
   //TODO- Estandarizacion
 
-  const userIsRegistered = useSelector((state) => state.user.isRegistered);
+  const userIsLoggedIn = useSelector((state) => state.user.isLoggedIn);
   const dispatch = useDispatch();
 
-  return userIsRegistered ? (
+  return userIsLoggedIn ? (
     <Navigate to="/" />
   ) : (
     <div className="flex items-center justify-center h-screen">
       <div className="bg-ucr-light-blue h-3/2 rounded-lg p-4">
         <div className="text-center">
-          <h1 className="text-4xl text-white font-semibold mt-1 mb-4 pb-1">
+          <h1 className="text-5xl text-white font-semibold mt-1 mb-4 pb-1">
             Registrar cuenta ECCIPASS
           </h1>
-          <p className="mb-8 text-gray-200">
+          <p className="mb-8 text-gray-200 text-2xl">
             Regístrese para acceder a la plataforma
           </p>
         </div>
@@ -117,6 +117,38 @@ export default function Register() {
             }}
           />
         </div>
+        <div className="flex justify-center mb-4">
+          <select 
+            type="userType"
+            id="userType" 
+            className="form-control block w-11/12 px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+            value={userType}
+            onChange={(evt) => {
+              setUserType(evt.target.value);
+            }}
+            >
+            <option selected>Tipo de cuenta</option>
+            <option value="Estudiante">Estudiante</option>
+            <option value="Profesor">Profesor</option>
+            <option value="Invitado">Invitado</option>
+          </select>
+        </div>
+        <div className="mb-1 flex justify-evenly">
+          <p className="mb-2 text-gray-200 text-1xl">
+            Imagen de perfil
+          </p>
+        </div>
+        <div className="flex justify-center mb-4">
+          <input 
+            className="form-control block w-11/12 px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" 
+            id="userPicture" 
+            type="file"
+            value={userPicture}
+            onChange={(evt) => {
+              setPicture(evt.target.value);
+            }}
+          />
+        </div>
         <div className="text-center">
           <a className="text-white text-sm" href="#!">
             Olvidó su contraseña?
@@ -124,12 +156,12 @@ export default function Register() {
         </div>
         <div className="text-center pt-1 mb-12 pb-1 mt-8">
           <button
-            className="inline-block h-12 px-6 py-2.5 text-white bg-[#1271c0] hover:bg-ucr-blue font-medium text-xs leading-tight uppercase rounded-3xl shadow-md mb-3"
+            className="inline-block h-12 px-6 py-2.5 text-white bg-[#1271c0] hover:bg-ucr-blue font-medium text-1xl leading-tight uppercase rounded-3xl shadow-md mb-0"
             type="button"
             data-mdb-ripple="true"
             data-mdb-ripple-color="light"
             onClick={() => {
-              dispatch(registered());
+              dispatch(login());
             }}
           >
             Registrarse
