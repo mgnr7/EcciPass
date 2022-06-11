@@ -5,6 +5,7 @@ const userSlice = createSlice({
   initialState: {
     user: null,
     isLoggedIn: false,
+    isRegistered: false,
   },
   reducers: {
     logout: (state) => {
@@ -16,10 +17,15 @@ const userSlice = createSlice({
       state.user = "demo";
       state.isLoggedIn = true;
     },
+    //Simulacion register
+    register: (state) => {
+      state.user = "registrado";
+      state.isRegistered = true;
+    }
   },
 });
 
-export const { logout, login } = userSlice.actions;
+export const { logout, login, register } = userSlice.actions;
 
 //Agregar funcion de Login despues de implementar en el API
 

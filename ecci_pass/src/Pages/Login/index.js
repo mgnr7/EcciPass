@@ -54,7 +54,7 @@ export default function Login() {
           </a>
         </div>
         <div className="text-center mt-8">
-          <a className="text-white text-lg" href="#!">
+          <a className="text-white text-lg" href="/register">
             Registrarse
           </a>
         </div>
