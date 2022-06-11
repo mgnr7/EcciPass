@@ -5,6 +5,7 @@ module.exports = {
       colors: {
         "ucr-light-blue": "#00C0F3",
         "ucr-blue": "#005DA4",
+        "ucr-yellow": "#ffe06a",
       },
     },
   },
