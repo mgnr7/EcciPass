@@ -32,20 +32,18 @@ export default function DeviceDetails() {
               ></img>
             </div>
           </div>
-          <div className="w-full inline-flex items-center">
-            <div className="">
-              <button className="btn bg-ucr-green text-white font-bold py-2 px-4">
-                Volver a dispositivos
-              </button>
+          <div className="w-full my-20 flex justify-center">
+            <button className="btn mr-5 bg-ucr-green hover:bg-green-600 text-white font-bold py-5 px-8 rounded-lg">
+              Volver a dispositivos
+            </button>
 
-              <button className="btn bg-ucr-blue text-white font-bold py-2 px-4">
-                Reportar como extraviado
-              </button>
+            <button className="btn mx-5 bg-sky-600 hover:bg-ucr-blue text-white font-bold py-5 px-8 rounded-lg">
+              Reportar como extraviado
+            </button>
 
-              <button className="btn bg-red-600 text-white font-bold py-2 px-4">
-                Eliminar dispositivo
-              </button>
-            </div>
+            <button className="btn ml-5 bg-red-500 hover:bg-red-600 text-white font-bold py-5 px-8 rounded-lg">
+              Eliminar dispositivo
+            </button>
           </div>
         </div>
       </div>
