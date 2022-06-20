@@ -21,7 +21,7 @@ function Header() {
           </div>
           <div className="float-right mt-1 mb-1">
             <div className="border-black border-t-0 border-l-2 border-r-0 border-b-0">
-              <a href="/" className="block pr-10 pl-10 text-black ">
+              <a href="/help" className="block pr-10 pl-10 text-black ">
                 Ayuda
               </a>
             </div>
