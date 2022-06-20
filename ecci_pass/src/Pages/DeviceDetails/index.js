@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Header from "../../Component/Header";
 
 export default function DeviceDetails() {
@@ -32,9 +33,12 @@ export default function DeviceDetails() {
           </div>
           <div className="w-full flex justify-center lg:my-20">
             <div className="justify-center">
-              <button className="btn bg-ucr-green hover:bg-green-600 text-white font-bold py-5 px-8 rounded-lg lg:mr-5 ">
+              <Link
+                className="btn bg-ucr-green hover:bg-green-600 text-white font-bold py-5 px-8 rounded-lg lg:mr-5 "
+                to="/"
+              >
                 Volver a dispositivos
-              </button>
+              </Link>
 
               <button className="btn bg-sky-600 hover:bg-ucr-blue text-white font-bold py-5 px-8 rounded-lg lg:mx-5">
                 Reportar como extraviado
