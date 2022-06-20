@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { logout } from "../../Slices/userSlice";
 import Header from "../../Component/Header";
+import Footer from "../../Component/Footer";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -24,6 +25,7 @@ export default function Home() {
           </button>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
