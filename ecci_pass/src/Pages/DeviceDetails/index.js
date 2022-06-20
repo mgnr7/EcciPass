@@ -1,9 +1,6 @@
-import { useDispatch } from "react-redux";
 import Header from "../../Component/Header";
 
 export default function DeviceDetails() {
-  const dispatch = useDispatch();
-
   return (
     <div>
       <Header />
