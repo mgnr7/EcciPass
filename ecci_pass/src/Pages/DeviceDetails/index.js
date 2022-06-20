@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Header from "../../Component/Header";
+import Footer from "../../Component/Footer";
 
 export default function DeviceDetails() {
   return (
@@ -51,6 +52,7 @@ export default function DeviceDetails() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

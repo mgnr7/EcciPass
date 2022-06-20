@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Header from "../../Component/Header";
+import Footer from "../../Component/Footer";
 
 export default function Home() {
   const user = useSelector((state) => state.user.user);
@@ -59,7 +60,7 @@ export default function Home() {
                 Generar Comprobante
               </button>
               <Link
-                className="btn lg:w-3/4 lg:mt-8 lg:mb-8 bg-ucr-orange hover:bg-orange-600 text-white rounded-lg px-4 py-4"
+                className="btn lg:w-3/4 lg:mt-8 lg:mb-8 bg-ucr-orange hover:bg-orange-600 text-white text-center rounded-lg px-4 py-4"
                 href="/help"
                 to="/device-details/1"
               >
@@ -69,6 +70,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
