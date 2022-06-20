@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <div>
       <Header />
-      <div className="flow-root w-screen text-gray-700 px-14 py-2">
+      <div className="flow-root w-screen text-gray-700 px-14 py-2 md:flex-row">
         <div className="float-left">
           <p className="text-4xl">Activos electrónicos registrados</p>
         </div>
