@@ -1,4 +1,5 @@
 import Header from "../../Component/Header";
+import Footer from "../../Component/Footer";
 
 export default function HelpSection() {
   return (
@@ -52,6 +53,7 @@ export default function HelpSection() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
