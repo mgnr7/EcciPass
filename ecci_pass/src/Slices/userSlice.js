@@ -4,6 +4,8 @@ const userSlice = createSlice({
   name: "user",
   initialState: {
     user: null,
+    userName: "",
+    userType: "",
     isLoggedIn: false,
     isRegistered: false,
   },
@@ -15,13 +17,15 @@ const userSlice = createSlice({
     //Simulacion de login
     login: (state) => {
       state.user = "demo";
+      state.userName = "Usuario Demo";
+      state.userType = "Estudiante";
       state.isLoggedIn = true;
     },
     //Simulacion register
     register: (state) => {
       state.user = "registrado";
       state.isRegistered = true;
-    }
+    },
   },
 });
 

@@ -15,7 +15,7 @@ export default function Home() {
         </div>
         <div className="float-right">
           <p className="text-lg">
-            {user && user.name ? ` ${user.name}` : "Nombre de usuario"}
+            {user && user.userName ? ` ${user.userName}` : "Nombre de usuario"}
           </p>
         </div>
       </div>
@@ -36,7 +36,7 @@ export default function Home() {
           <div className="flex flex-col border-2 border-black md:flex-row bg-gray-300 rounded-lg shadow-xl mt-4 w-100 mx-2 px-5 py-2">
             <div className="h-64 w-auto md:w-1/2">
               <img
-                className="inset-0 h-full w-full object-cover object-center object-scale-down"
+                className="inset-0 h-full w-full object-center object-scale-down"
                 src="https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4LqQX?ver=fe80&q=90&m=6&h=705&w=1253&b=%23FFFFFFFF&f=jpg&o=f&p=140&aim=true"
                 alt="Imagen del dispositivo"
               />
