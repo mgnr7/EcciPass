@@ -20,7 +20,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="pt-6 pb-12">
+      <div className="pt-6 pb-12 h-screen">
         <div className="container w-100 lg:w-4/5 mx-auto flex flex-col">
           <div className="flow-root text-gray-700 px-14 py-2">
             <div className="float-left">
