@@ -7,6 +7,7 @@ module.exports = {
         "ucr-blue": "#005DA4",
         "ucr-yellow": "#ffe06a",
         "ucr-green": "#6dc067",
+        "ucr-orange": "#f37021",
       },
     },
   },
