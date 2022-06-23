@@ -24,7 +24,7 @@ export default function Register() {
     <Navigate to="/" />
   ) : (
     <div className="flex items-center justify-center h-screen w-screen">
-      <div className="bg-ucr-light-blue h-3/2 rounded-lg p-6">
+      <div className="bg-ucr-light-blue h-3/2 rounded-lg p-3">
         <div className="text-center">
           <h1 className="text-5xl text-white font-semibold mt-1 mb-10 pb-1">
             Registro cuenta
