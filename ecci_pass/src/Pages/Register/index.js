@@ -23,15 +23,12 @@ export default function Register() {
   return userIsLoggedIn ? (
     <Navigate to="/" />
   ) : (
-    <div className="flex items-center justify-center h-screen">
-      <div className="bg-ucr-light-blue h-3/2 rounded-lg p-4">
+    <div className="flex items-center justify-center h-screen w-screen">
+      <div className="bg-ucr-light-blue h-3/2 rounded-lg p-3">
         <div className="text-center">
-          <h1 className="text-5xl text-white font-semibold mt-1 mb-4 pb-1">
-            Registrar cuenta ECCIPASS
+          <h1 className="text-5xl text-white font-semibold mt-1 mb-10 pb-1">
+            Registro cuenta
           </h1>
-          <p className="mb-8 text-gray-200 text-2xl">
-            Regístrese para acceder a la plataforma
-          </p>
         </div>
         <div className="flex justify-center mb-4">
           <input
@@ -135,7 +132,7 @@ export default function Register() {
         </div>
         <div className="mb-1 flex justify-evenly">
           <p className="mb-2 text-gray-200 text-1xl">
-            Imagen de perfil
+            Imágen de perfil
           </p>
         </div>
         <div className="flex justify-center mb-4">
@@ -149,14 +146,9 @@ export default function Register() {
             }}
           />
         </div>
-        <div className="text-center">
-          <a className="text-white text-sm" href="#!">
-            Olvidó su contraseña?
-          </a>
-        </div>
-        <div className="text-center pt-1 mb-12 pb-1 mt-8">
+        <div className="text-center pt-1 mb-8 pb-1 mt-10">
           <button
-            className="inline-block h-12 px-6 py-2.5 text-white bg-[#1271c0] hover:bg-ucr-blue font-medium text-1xl leading-tight uppercase rounded-3xl shadow-md mb-0"
+            className="inline-block h-14 px-6 py-2.5 text-white bg-[#1271c0] hover:bg-ucr-blue font-medium text-1xl leading-tight uppercase rounded-3xl shadow-md mb-0"
             type="button"
             data-mdb-ripple="true"
             data-mdb-ripple-color="light"
