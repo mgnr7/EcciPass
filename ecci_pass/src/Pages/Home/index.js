@@ -27,12 +27,14 @@ export default function Home() {
               <p className="font-semibold">Estado: </p>
             </div>
             <div className="float-right">
-              <button className="bg-sky-600 hover:bg-ucr-blue text-white rounded-lg px-4 py-2">
+              <Link
+                className="bg-sky-600 hover:bg-ucr-blue text-white rounded-lg px-4 py-2"
+                to="/registerDevice"
+              >
                 Registrar dispositivo
-              </button>
+              </Link>
             </div>
           </div>
-
           <div className="flex flex-col border-2 border-black md:flex-row bg-gray-300 rounded-lg shadow-xl mt-4 w-100 mx-2 px-5 py-2">
             <div className="h-64 w-auto md:w-1/2">
               <img
