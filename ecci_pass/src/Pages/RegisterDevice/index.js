@@ -1,6 +1,4 @@
 // import { useSelector } from "react-redux";
-import Header from "../../Component/Header";
-import Footer from "../../Component/Footer";
 import { useState } from "react";
 
 export default function RegisterDevice() {
@@ -12,14 +10,13 @@ export default function RegisterDevice() {
 
     return (
         <div>
-            <Header />
             <div class="grid grid-cols-5 gap-0 text-center ">
-                <div class="col-span-3 text-center">
+                <div class="col-span-4 text-center">
                     <div className="flow-root w-100 text-gray-700 px-14 py-2 md:flex-row">
                         <div className="mb-8">
                             <h1 className="text-4xl mt-6" > Registro activo nuevo </h1>
                         </div>
-                        <div className="w-full">
+                        <div className="w-11/12">
                             <form className="bg-white shadow-lg rounded px-8 pt-6 pb-10 mb-8 border-2">
                                 <div className="mb-10">
                                     <label className="block text-gray-700 text-xl font-bold mb-2" for="brand">
@@ -93,7 +90,10 @@ export default function RegisterDevice() {
                         </div>
                     </div>
                 </div>
-                <div class="text-center pt-60 mb-8 pb-1 mt-2 ml-1">
+                <div class="text-center pt-60 mb-6 pb-1 mt-2 mr-24">
+                    <label className="block text-gray-700 text-xl font-bold mb-2">
+                        Imágen activo
+                    </label>
                     <div class="flex justify-center items-center w-full">
                         <label for="dropzone-file" class="flex flex-col justify-center items-center w-full h-64 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
                             <div class="flex flex-col justify-center items-center pt-5 pb-6">
@@ -114,7 +114,6 @@ export default function RegisterDevice() {
                     Cancelar
                 </button>
             </div>
-            <Footer />
         </div>
     );
 }
