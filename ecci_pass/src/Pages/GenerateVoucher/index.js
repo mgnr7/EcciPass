@@ -7,7 +7,7 @@ export default function GenerateVoucher() {
   return (
     <div>
       <Header />
-      <div className="container mx-auto h-screen">
+      <div className="container mx-auto h-screen mb-12">
         <div className="h-5/6 p-10">
           <div className="w-full flex flex-col md:flex-row">
             <div className="md:w-2/3 lg:w-3/4">
@@ -25,7 +25,7 @@ export default function GenerateVoucher() {
                 <li className="mb-2">Aprobado</li>
               </ul>
             </div>
-            <div className="flex w-2/6 mt-12 py-2 items-center justify-center border-2 border-black rounded-lg">
+            <div className="lg:flex lg:w-2/6 lg:mt-12 lg:py-2 lg:items-center lg:justify-center lg:border-2 lg:border-black lg:rounded-lg">
               {/*Cambiar cuando se haya echo el deploy*/}
               <QRCode value="http://localhost:3000/device-details/1" />
             </div>
