@@ -5,6 +5,7 @@ import Register from "../Register";
 import Help from "../Help";
 import DeviceDetails from "../DeviceDetails";
 import PrivateRoute from "../../Component/PrivateRoute";
+import GenerateVoucher from "../GenerateVoucher";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="help" element={<Help />} />
           <Route path="device-details/:id" element={<DeviceDetails />} />
+          <Route path="generate-voucher/:id" element={<GenerateVoucher />} />
         </Route>
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
