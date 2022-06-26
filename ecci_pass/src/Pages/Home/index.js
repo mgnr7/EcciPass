@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { FiCheck, FiClipboard } from "react-icons/fi";
 import Header from "../../Component/Header";
 import Footer from "../../Component/Footer";
 
@@ -10,7 +11,10 @@ const devices = [
     Modelo: "MacBook Pro 2019",
     NumeroSerie: "IJASN23KM200",
     Tipo: "Laptop",
-    imagen: "https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4LqQX?ver=fe80&q=90&m=6&h=705&w=1253&b=%23FFFFFFFF&f=jpg&o=f&p=140&aim=true"
+    imagen:
+      "https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4LqQX?ver=fe80&q=90&m=6&h=705&w=1253&b=%23FFFFFFFF&f=jpg&o=f&p=140&aim=true",
+
+    Estado: "Aprobado",
   },
   {
     id: 2,
@@ -18,9 +22,11 @@ const devices = [
     Modelo: "MacBook Pro 2019",
     NumeroSerie: "IJASN23KM200",
     Tipo: "Laptop",
-    imagen: "https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4LqQX?ver=fe80&q=90&m=6&h=705&w=1253&b=%23FFFFFFFF&f=jpg&o=f&p=140&aim=true"
-  }
-]
+    imagen:
+      "https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4LqQX?ver=fe80&q=90&m=6&h=705&w=1253&b=%23FFFFFFFF&f=jpg&o=f&p=140&aim=true",
+    Estado: "En revisión",
+  },
+];
 
 export default function Home() {
   const user = useSelector((state) => state.user.user);
@@ -42,9 +48,6 @@ export default function Home() {
       <div className="pt-6 pb-12">
         <div className="container w-100 lg:w-4/5 mx-auto flex flex-col mb-12">
           <div className="flow-root text-gray-700 px-14 py-2">
-            <div className="float-left">
-              <p className="font-semibold">Estado: </p>
-            </div>
             <div className="float-right">
               <button className="bg-sky-600 hover:bg-ucr-blue text-white rounded-lg px-4 py-2">
                 Registrar dispositivo
@@ -52,49 +55,60 @@ export default function Home() {
             </div>
           </div>
 
-        {devices.map((d) => {
-          return (
-            //Agregar el estado, y agregar device Id
-            <div className="flex flex-col border-2 border-black md:flex-row bg-gray-300 rounded-lg shadow-xl mt-4 w-100 mx-2 px-5 py-2">
-              <div className="h-64 w-auto md:w-1/2">
-                <img
-                  className="inset-0 h-full w-full object-center object-scale-down"
-                  src={d.imagen}
-                  alt="Imagen del dispositivo"
-                />
-              </div>
+          {devices.map((d) => {
+            return (
+              <div key={`device_${d.id}`}>
+                <div className="text-gray-700 mt-4 ml-4 inline-flex">
+                  <p className="font-semibold">Estado: {d.Estado}</p>
+                  {d.Estado === "Aprobado" ? (
+                    <FiCheck className="ml-2" />
+                  ) : (
+                    <FiClipboard className="ml-2" />
+                  )}
+                </div>
+                <div className="flex flex-col border-2 border-black md:flex-row bg-gray-300 rounded-lg shadow-xl mt-4 w-100 mx-2 px-5 py-2">
+                  <div className="h-64 w-auto md:w-1/2">
+                    <img
+                      className="inset-0 h-full w-full object-center object-scale-down"
+                      src={d.imagen}
+                      alt="Imagen del dispositivo"
+                    />
+                  </div>
 
-              <div className="w-full py-4 px-6 text-gray-800 flex flex-col">
-                <p className="font-semibold text-lg">Marca</p>
-                <p className="">{d.Marca}</p>
-                <p className="font-semibold text-lg">Modelo</p>
-                <p className="text-lg truncate">{d.Modelo}</p>
-                <p className="font-semibold text-lg truncate">Número de serie</p>
-                <p className="text-lg truncate">{d.NumeroSerie}</p>
-                <p className="font-semibold text-lg truncate">
-                  Tipo de dispositivo
-                </p>
-                <p className="text-lg truncate">{d.Tipo}</p>
-              </div>
+                  <div className="w-full py-4 px-6 text-gray-800 flex flex-col">
+                    <p className="font-semibold text-lg">Marca</p>
+                    <p className="">{d.Marca}</p>
+                    <p className="font-semibold text-lg">Modelo</p>
+                    <p className="text-lg truncate">{d.Modelo}</p>
+                    <p className="font-semibold text-lg truncate">
+                      Número de serie
+                    </p>
+                    <p className="text-lg truncate">{d.NumeroSerie}</p>
+                    <p className="font-semibold text-lg truncate">
+                      Tipo de dispositivo
+                    </p>
+                    <p className="text-lg truncate">{d.Tipo}</p>
+                  </div>
 
-              <div className="w-full py-4 px-6 text-gray-800 flex flex-col items-center">
-                <button className="lg:w-3/4 lg:mb-8 lg:mt-8 bg-ucr-green hover:bg-green-600 text-white rounded-lg px-4 py-4">
-                  Generar Comprobante
-                </button>
-                <Link
-                  className="btn lg:w-3/4 lg:mt-8 lg:mb-8 bg-ucr-orange hover:bg-orange-600 text-white text-center rounded-lg px-4 py-4"
-                  href="/help"
-                  to="/device-details/1"
-                >
-                  Más detalles
-                </Link>
+                  <div className="w-full py-4 px-6 text-gray-800 flex flex-col items-center">
+                    <button className="lg:w-3/4 lg:mb-8 lg:mt-8 bg-ucr-green hover:bg-green-600 text-white rounded-lg px-4 py-4">
+                      Generar Comprobante
+                    </button>
+                    <Link
+                      className="btn lg:w-3/4 lg:mt-8 lg:mb-8 bg-ucr-orange hover:bg-orange-600 text-white text-center rounded-lg px-4 py-4"
+                      href="/help"
+                      to="/device-details/1"
+                    >
+                      Más detalles
+                    </Link>
+                  </div>
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
-      </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 }
