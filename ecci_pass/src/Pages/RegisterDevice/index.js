@@ -1,5 +1,6 @@
 // import { useSelector } from "react-redux";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function RegisterDevice() {
 
@@ -106,12 +107,16 @@ export default function RegisterDevice() {
                     </div>
                 </div>
             </div>
-            <div className="text-center pt-1 mb-12 pb-1 mt-8 ">
+            <div className="text-center pt-1 mb-12 pb-1 mt-8">
+                <Link
+                    className="bg-red-500 hover:bg-red-700 text-white font-bold py-4 px-6 rounded focus:outline-none focus:shadow-outline mr-24"
+                    type="button"
+                    to="/"
+                >
+                Cancelar
+                </Link>
                 <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-5 rounded focus:outline-none focus:shadow-outline" type="button">
                     Registrar activo
-                </button>
-                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-4 px-6 rounded focus:outline-none focus:shadow-outline" type="button">
-                    Cancelar
                 </button>
             </div>
         </div>
