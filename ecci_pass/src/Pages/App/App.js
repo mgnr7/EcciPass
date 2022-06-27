@@ -5,17 +5,22 @@ import Register from "../Register";
 import Profile from "../Profile";
 import Help from "../Help";
 import DeviceDetails from "../DeviceDetails";
+import PrivateRoute from "../../Component/PrivateRoute";
+import RegisterDevice from "../RegisterDevice";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route element={<PrivateRoute></PrivateRoute>}>
+          <Route path="/" element={<Home />} />
+          <Route path="device-details/:id" element={<DeviceDetails />} />
+        </Route>
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
         <Route path="profile" element={<Profile />} />
         <Route path="help" element={<Help />} />
-        <Route path="device-details/:id" element={<DeviceDetails />} />
+        <Route path="registerDevice" element={<RegisterDevice />} />
       </Routes>
     </BrowserRouter>
   );
