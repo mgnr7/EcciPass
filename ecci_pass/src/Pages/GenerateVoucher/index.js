@@ -25,15 +25,15 @@ export default function GenerateVoucher() {
                 <li className="mb-2">Aprobado</li>
               </ul>
             </div>
-            <div className="lg:flex lg:w-2/6 lg:mt-12 lg:py-2 lg:items-center lg:justify-center lg:border-2 lg:border-black lg:rounded-lg">
+            <div className="lg:flex lg:w-2/6 lg:mt-12 lg:py-2 lg:items-center lg:justify-center lg:border-2 lg:border-black lg:rounded-lg mb-5">
               {/*Cambiar cuando se haya echo el deploy*/}
               <QRCode value="http://localhost:3000/device-details/1" />
             </div>
           </div>
-          <div className="w-full flex justify-center lg:my-20">
+          <div className="flex justify-center lg:my-20">
             <div className="justify-center">
               <Link
-                className="btn bg-ucr-green hover:bg-green-600 text-white font-bold py-5 px-8 rounded-lg lg:mr-5 "
+                className="btn bg-ucr-green hover:bg-green-600 text-white font-bold py-2 px-2 lg:py-5 lg:px-8 rounded-lg lg:mr-5"
                 to="/"
               >
                 Volver a dispositivos
