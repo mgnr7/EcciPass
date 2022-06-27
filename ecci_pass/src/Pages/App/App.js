@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "../Login";
 import Home from "../Home";
 import Register from "../Register";
+import Profile from "../Profile";
 import Help from "../Help";
 import DeviceDetails from "../DeviceDetails";
 import PrivateRoute from "../../Component/PrivateRoute";
@@ -19,6 +20,7 @@ function App() {
         </Route>
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
+        <Route path="profile" element={<Profile />} />
         <Route path="help" element={<Help />} />
         <Route path="registerDevice" element={<RegisterDevice />} />
       </Routes>

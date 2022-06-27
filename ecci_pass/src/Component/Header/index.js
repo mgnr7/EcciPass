@@ -19,6 +19,11 @@ function Header() {
               </a>
             </div>
           </div>
+          <div className="float-left mt-1 mb-1">
+              <a href="/profile" className="block pr-10 pl-10 text-black ">
+                Perfil
+              </a>
+          </div>
           <div className="float-right mt-1 mb-1">
             <div className="border-black border-t-0 border-l-2 border-r-0 border-b-0">
               <a href="/help" className="block pr-10 pl-10 text-black ">
