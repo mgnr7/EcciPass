@@ -11,8 +11,8 @@ export default function RegisterDevice() {
 
     return (
         <div>
-            <div class="grid grid-cols-5 gap-0 text-center ">
-                <div class="col-span-4 text-center">
+            <div class="grid grid-cols-5 gap-0">
+                <div class="col-span-4">
                     <div className="flow-root w-100 text-gray-700 px-14 py-2 md:flex-row">
                         <div className="mb-8">
                             <h1 className="text-4xl mt-6" > Registro activo nuevo </h1>
