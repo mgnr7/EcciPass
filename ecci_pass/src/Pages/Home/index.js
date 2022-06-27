@@ -49,12 +49,22 @@ export default function Home() {
         <div className="container w-100 lg:w-4/5 mx-auto flex flex-col mb-12">
           <div className="flow-root text-gray-700 px-14 py-2">
             <div className="float-right">
-              <button className="bg-sky-600 hover:bg-ucr-blue text-white rounded-lg px-4 py-2">
+              <Link
+                className="bg-sky-600 hover:bg-ucr-blue text-white rounded-lg px-4 py-2"
+                to="/registerDevice"
+              >
                 Registrar dispositivo
-              </button>
+              </Link>
             </div>
           </div>
-
+          <div className="flex flex-col border-2 border-black md:flex-row bg-gray-300 rounded-lg shadow-xl mt-4 w-100 mx-2 px-5 py-2">
+            <div className="h-64 w-auto md:w-1/2">
+              <img
+                className="inset-0 h-full w-full object-center object-scale-down"
+                src="https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4LqQX?ver=fe80&q=90&m=6&h=705&w=1253&b=%23FFFFFFFF&f=jpg&o=f&p=140&aim=true"
+                alt="Imagen del dispositivo"
+              />
+            </div>
           {devices.map((d) => {
             return (
               <div key={`device_${d.id}`}>
@@ -74,7 +84,6 @@ export default function Home() {
                       alt="Imagen del dispositivo"
                     />
                   </div>
-
                   <div className="w-full py-4 px-6 text-gray-800 flex flex-col">
                     <p className="font-semibold text-lg">Marca</p>
                     <p className="">{d.Marca}</p>
