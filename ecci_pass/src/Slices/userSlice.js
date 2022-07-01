@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 const userSlice = createSlice({
   name: "user",
@@ -27,10 +27,50 @@ const userSlice = createSlice({
       state.isRegistered = true;
     },
   },
+  extraReducers(builder) {
+    builder
+      .addCase(postLogin.fulfilled, (state, action) => {
+        if (action.payload.error) {
+          state.isLoggedIn = false;
+          state.user = null;
+          state.errorMessage = action.payload.message;
+        } else {
+          state.isLoggedIn = true;
+          state.user = action.payload;
+        }
+      })
+      .addCase(postLogin.rejected, (state) => {
+        state.isLoggedIn = false;
+        state.user = null;
+      });
+  },
 });
 
 export const { logout, login, register } = userSlice.actions;
 
-//Agregar funcion de Login despues de implementar en el API
+export const postLogin = createAsyncThunk(
+  "usuarios/postLogin",
+  async (credentials) => {
+    const loginFetch = await fetch("http://localhost:7500/users/login", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        email: credentials.username,
+        password: credentials.password,
+      }),
+    });
+    const userData = await loginFetch.json();
+    if (loginFetch.status === 200) {
+      return userData;
+    } else {
+      return {
+        error: true,
+        message: userData.error.message,
+      };
+    }
+  }
+);
 
 export default userSlice.reducer;

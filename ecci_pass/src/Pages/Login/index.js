@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
-import { login } from "../../Slices/userSlice";
+import { postLogin } from "../../Slices/userSlice";
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -65,7 +65,12 @@ export default function Login() {
             data-mdb-ripple="true"
             data-mdb-ripple-color="light"
             onClick={() => {
-              dispatch(login());
+              dispatch(
+                postLogin({
+                  username,
+                  password,
+                })
+              );
             }}
           >
             Iniciar Sesión
