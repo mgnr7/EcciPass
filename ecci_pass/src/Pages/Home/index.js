@@ -1,35 +1,22 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FiCheck, FiClipboard } from "react-icons/fi";
 import Header from "../../Component/Header";
 import Footer from "../../Component/Footer";
-
-const devices = [
-  {
-    id: 1,
-    Marca: "Apple",
-    Modelo: "MacBook Pro 2019",
-    NumeroSerie: "IJASN23KM200",
-    Tipo: "Laptop",
-    imagen:
-      "https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4LqQX?ver=fe80&q=90&m=6&h=705&w=1253&b=%23FFFFFFFF&f=jpg&o=f&p=140&aim=true",
-
-    Estado: "Aprobado",
-  },
-  {
-    id: 2,
-    Marca: "Apple",
-    Modelo: "MacBook Pro 2019",
-    NumeroSerie: "IJASN23KM200",
-    Tipo: "Laptop",
-    imagen:
-      "https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4LqQX?ver=fe80&q=90&m=6&h=705&w=1253&b=%23FFFFFFFF&f=jpg&o=f&p=140&aim=true",
-    Estado: "En revisión",
-  },
-];
+import { getUserDevices } from "../../Slices/devicesSlice";
 
 export default function Home() {
+  const dispatch = useDispatch();
+
   const user = useSelector((state) => state.user.user);
+  const devices = useSelector((state) => state.devices.devicesList);
+
+  useEffect(() => {
+    dispatch(getUserDevices());
+  }, [dispatch]);
+
+  console.log("devices ", devices);
 
   return (
     <div className="h-screen">
@@ -60,10 +47,10 @@ export default function Home() {
 
           {devices.map((d) => {
             return (
-              <div key={`device_${d.id}`}>
+              <div key={`device_${d.deviceId}`}>
                 <div className="text-gray-700 mt-4 ml-4 inline-flex">
-                  <p className="font-semibold">Estado: {d.Estado}</p>
-                  {d.Estado === "Aprobado" ? (
+                  <p className="font-semibold">Estado: {d.state}</p>
+                  {d.state === "Aprobado" ? (
                     <FiCheck className="ml-2" />
                   ) : (
                     <FiClipboard className="ml-2" />
@@ -73,23 +60,23 @@ export default function Home() {
                   <div className="h-64 w-auto md:w-1/2">
                     <img
                       className="inset-0 h-full w-full object-center object-scale-down"
-                      src={d.imagen}
+                      src={d.imageUrl}
                       alt="Imagen del dispositivo"
                     />
                   </div>
                   <div className="w-full py-4 px-6 text-gray-800 flex flex-col">
                     <p className="font-semibold text-lg">Marca</p>
-                    <p className="">{d.Marca}</p>
+                    <p className="">{d.brand}</p>
                     <p className="font-semibold text-lg">Modelo</p>
-                    <p className="text-lg truncate">{d.Modelo}</p>
+                    <p className="text-lg truncate">{d.model}</p>
                     <p className="font-semibold text-lg truncate">
                       Número de serie
                     </p>
-                    <p className="text-lg truncate">{d.NumeroSerie}</p>
+                    <p className="text-lg truncate">{d.serialNumber}</p>
                     <p className="font-semibold text-lg truncate">
                       Tipo de dispositivo
                     </p>
-                    <p className="text-lg truncate">{d.Tipo}</p>
+                    <p className="text-lg truncate">{d.deviceType}</p>
                   </div>
 
                   <div className="w-full py-4 px-6 text-gray-800 flex flex-col items-center">
