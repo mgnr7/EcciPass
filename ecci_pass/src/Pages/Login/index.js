@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
-import { postLogin } from "../../Slices/userSlice";
+import { login, postLogin } from "../../Slices/userSlice";
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -70,6 +70,7 @@ export default function Login() {
                   username,
                   password,
                 })
+                //login()
               );
             }}
           >
