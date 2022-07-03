@@ -3,9 +3,11 @@ import storage from "redux-persist/lib/storage";
 import { persistReducer } from "redux-persist";
 
 import userSlice from "./Slices/userSlice";
+import devicesSlice from "./Slices/devicesSlice";
 
 const reducers = combineReducers({
   user: userSlice,
+  devices: devicesSlice,
 });
 
 const rootPersistConfig = {
