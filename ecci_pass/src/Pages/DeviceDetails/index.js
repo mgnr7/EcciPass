@@ -1,8 +1,20 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
 import Header from "../../Component/Header";
 import Footer from "../../Component/Footer";
+import { getDeviceDetails } from "../../Slices/devicesSlice";
 
 export default function DeviceDetails() {
+  const dispatch = useDispatch();
+  const params = useParams();
+  const deviceId = params.id;
+  useEffect(() => {
+    dispatch(getDeviceDetails(deviceId));
+  }, [dispatch]);
+  const device = useSelector((state) => state.devices.userDevice);
+  console.log("deviceId: " + deviceId);
+
   return (
     <div>
       <Header />
@@ -13,22 +25,22 @@ export default function DeviceDetails() {
               <p className="text-3xl">Detalles del Activo</p>
               <ul className="mt-7">
                 <li className="font-semibold text-lg">Marca</li>
-                <li className="mb-2">Apple</li>
+                <li className="mb-2">{device.brand}</li>
                 <li className="font-semibold text-lg">Modelo</li>
-                <li className="mb-2">MacBook pro 2019</li>
+                <li className="mb-2">{device.model}</li>
                 <li className="font-semibold text-lg">Número de serie</li>
-                <li className="mb-2">AIJFDB992BNHB2</li>
+                <li className="mb-2">{device.serialNumber}</li>
                 <li className="font-semibold text-lg">Tipo de dispositivo</li>
-                <li className="mb-2">Laptop</li>
+                <li className="mb-2">{device.deviceType}</li>
                 <li className="font-semibold text-lg">Estado</li>
-                <li className="mb-2">Aprobado</li>
+                <li className="mb-2">{device.state}</li>
               </ul>
             </div>
             <div className="md:w-2/3 lg:w-3/4">
               <img
                 className=""
                 alt="Imagen del dispositivo"
-                src="https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4LqQX?ver=fe80&q=90&m=6&h=705&w=1253&b=%23FFFFFFFF&f=jpg&o=f&p=140&aim=true"
+                src={device.imageUrl}
               ></img>
             </div>
           </div>

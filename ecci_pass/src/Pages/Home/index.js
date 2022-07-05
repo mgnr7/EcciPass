@@ -16,8 +16,6 @@ export default function Home() {
     dispatch(getUserDevices());
   }, [dispatch]);
 
-  console.log("devices ", devices);
-
   return (
     <div className="h-screen">
       <Header />
@@ -85,8 +83,7 @@ export default function Home() {
                     </button>
                     <Link
                       className="btn lg:w-3/4 lg:mt-8 lg:mb-8 bg-ucr-orange hover:bg-orange-600 text-white text-center rounded-lg px-4 py-4"
-                      href="/help"
-                      to="/device-details/1"
+                      to={`/device-details/${d.deviceId}`}
                     >
                       Más detalles
                     </Link>
