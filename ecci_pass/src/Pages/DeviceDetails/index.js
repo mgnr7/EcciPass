@@ -1,18 +1,20 @@
 import { Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
 import Header from "../../Component/Header";
 import Footer from "../../Component/Footer";
 import { getDeviceDetails } from "../../Slices/devicesSlice";
+import { useEffect } from "react";
 
 export default function DeviceDetails() {
   const dispatch = useDispatch();
   const params = useParams();
-  const deviceId = params.id;
-  useEffect(() => {
-    dispatch(getDeviceDetails(deviceId));
-  }, [dispatch]);
+  const deviceId = parseInt(params.id);
   const device = useSelector((state) => state.devices.userDevice);
+
+  useEffect(() => {
+    dispatch(getDeviceDetails({ deviceId }));
+  }, [deviceId, dispatch]);
+
   console.log("deviceId: " + deviceId);
 
   return (

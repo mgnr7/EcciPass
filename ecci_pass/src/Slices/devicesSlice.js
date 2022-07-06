@@ -99,6 +99,7 @@ export const getDeviceDetails = createAsyncThunk(
       {
         method: "POST",
         headers: {
+          "Content-type": "application/json",
           Authorization: `Bearer ${state.user.user.token}`,
         },
         body: JSON.stringify({
