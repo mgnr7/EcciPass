@@ -8,7 +8,6 @@ export default function Register() {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [apellido, setApellido] = useState("");
-  const [carnet, setCarnet] = useState("");
   const [id, setId] = useState("");
   const [mail, setMail] = useState("");
   const [userType, setUserType] = useState("");
@@ -75,18 +74,6 @@ export default function Register() {
             value={apellido}
             onChange={(evt) => {
               setApellido(evt.target.value);
-            }}
-          />
-        </div>
-        <div className="flex justify-center mb-4">
-          <input
-            type="carnet"
-            className="form-control block w-11/12 px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-            id="carnet"
-            placeholder="Carnet"
-            value={carnet}
-            onChange={(evt) => {
-              setCarnet(evt.target.value);
             }}
           />
         </div>
