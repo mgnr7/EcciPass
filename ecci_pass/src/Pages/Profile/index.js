@@ -1,11 +1,20 @@
 import Header from "../../Component/Header";
 import Footer from "../../Component/Footer";
-//import { useDispatch, useSelector } from "react-redux";
-//import { useEffect } from "react";
-//import userSlice, { login, register } from "../../Slices/userSlice";
-//import Register from "../Register";
+import { useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { getProfileDetails } from "../../Slices/userSlice";
+
 
 export default function Profile() {
+    const dispatch = useDispatch();
+    const params = useParams();
+    const userId = parseInt(params.id);
+    const userSelected = useSelector((state) => state.user.users);
+
+    useEffect(() => {
+        dispatch(getProfileDetails({ userId }));
+    }, [userId, dispatch]);
 
     return (
         <div>
@@ -23,7 +32,7 @@ export default function Profile() {
                                         Usuario
                                     </label>
                                     <p>
-                                        ecciPassUCR
+                                        {userSelected.username}
                                     </p>
                                 </div>
                                 <div className="mb-10 mt-5">
@@ -31,7 +40,7 @@ export default function Profile() {
                                         Nombre
                                     </label>
                                     <p>
-                                        Alejandro
+                                        {userSelected.name}
                                     </p>
                                 </div>
                                 <div className="mb-10 mt-5">
@@ -39,7 +48,7 @@ export default function Profile() {
                                         Apellidos
                                     </label>
                                     <p>
-                                        Alvarado Estrada
+                                        {userSelected.apellido}
                                     </p>
                                 </div>
                                 <div className="mb-10 mt-5">
@@ -47,7 +56,7 @@ export default function Profile() {
                                         Identificacion
                                     </label>
                                     <p>
-                                        118180582
+                                        {userSelected.id}
                                     </p>
                                 </div>
                                 <div className="mb-10 mt-5">
@@ -55,7 +64,7 @@ export default function Profile() {
                                         Correo electrónico
                                     </label>
                                     <p>
-                                        ecciPassUCR@ucr.ac.cr
+                                        {userSelected.mail}
                                     </p>
                                 </div>
                                 <div className="mb-1 mt-5">
@@ -63,7 +72,7 @@ export default function Profile() {
                                         Tipo de cuenta
                                     </label>
                                     <p>
-                                        Estudiante
+                                        {userSelected.userType}
                                     </p>
                                 </div>
                             </div>
