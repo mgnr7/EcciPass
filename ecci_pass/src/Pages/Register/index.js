@@ -2,22 +2,31 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import { login } from "../../Slices/userSlice";
+import { createUser } from "../../Slices/userSlice";
 
 export default function Register() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
-  const [apellido, setApellido] = useState("");
-  const [id, setId] = useState("");
-  const [mail, setMail] = useState("");
-  const [userType, setUserType] = useState("");
-  const [userPicture, setPicture] = useState("");
 
-  //TODO- Agregar seleccionar tipo cuenta
-  //TODO- Estandarizacion
+  const [userPicture, setPicture] = useState(null);
+  const [user, setUser] = useState({
+    username: "",
+    password: "",
+    mail: "",
+    name: "",
+    apellido: "",
+    id: "",
+    userType: "",
+    profilePicture: "",
+  });
 
+  const errorMessage = useSelector((state) => state.user.errorMessage);
   const userIsLoggedIn = useSelector((state) => state.user.isLoggedIn);
   const dispatch = useDispatch();
+  const handleChange = (field, value) => {
+    setUser({
+      ...user,
+      [field]: value,
+    });
+  };
 
   return userIsLoggedIn ? (
     <Navigate to="/" />
@@ -35,9 +44,9 @@ export default function Register() {
             className="form-control block w-11/12 px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
             id="username"
             placeholder="Usuario"
-            value={username}
+            value={user.username}
             onChange={(evt) => {
-              setUsername(evt.target.value);
+              handleChange("username", evt.target.value);
             }}
           />
         </div>
@@ -47,21 +56,22 @@ export default function Register() {
             className="form-control block w-11/12 px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
             id="password"
             placeholder="Contraseña"
-            value={password}
+            value={user.password}
             onChange={(evt) => {
-              setPassword(evt.target.value);
+              handleChange("password", evt.target.value);
             }}
           />
         </div>
+        {errorMessage && <span className="text-red-500">{errorMessage}</span>}
         <div className="flex justify-center mb-4">
           <input
             type="name"
             className="form-control block w-11/12 px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
             id="name"
             placeholder="Nombre"
-            value={name}
+            value={user.name}
             onChange={(evt) => {
-              setName(evt.target.value);
+              handleChange("name", evt.target.value);
             }}
           />
         </div>
@@ -71,9 +81,9 @@ export default function Register() {
             className="form-control block w-11/12 px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
             id="apellido"
             placeholder="Apellido"
-            value={apellido}
+            value={user.apellido}
             onChange={(evt) => {
-              setApellido(evt.target.value);
+              handleChange("apellido", evt.target.value);
             }}
           />
         </div>
@@ -83,9 +93,9 @@ export default function Register() {
             className="form-control block w-11/12 px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
             id="id"
             placeholder="Identificacion"
-            value={id}
+            value={user.id}
             onChange={(evt) => {
-              setId(evt.target.value);
+              handleChange("id", evt.target.value);
             }}
           />
         </div>
@@ -95,9 +105,9 @@ export default function Register() {
             className="form-control block w-11/12 px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
             id="mail"
             placeholder="Correo"
-            value={mail}
+            value={user.mail}
             onChange={(evt) => {
-              setMail(evt.target.value);
+              handleChange("mail", evt.target.value);
             }}
           />
         </div>
@@ -106,12 +116,15 @@ export default function Register() {
             type="userType"
             id="userType" 
             className="form-control block w-11/12 px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-            value={userType}
+            defaultValue={"Tipo"}
+            value={user.userType}
             onChange={(evt) => {
-              setUserType(evt.target.value);
+              handleChange("userType", evt.target.value);
             }}
             >
-            <option selected>Tipo de cuenta</option>
+            <option value="Tipo" disabled>
+              Seleccione un tipo de cuenta
+            </option>
             <option value="Estudiante">Estudiante</option>
             <option value="Profesor">Profesor</option>
             <option value="Invitado">Invitado</option>
@@ -123,15 +136,20 @@ export default function Register() {
           </p>
         </div>
         <div className="flex justify-center mb-4">
-          <input 
-            className="form-control block w-11/12 px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" 
-            id="userPicture" 
-            type="file"
-            value={userPicture}
-            onChange={(evt) => {
-              setPicture(evt.target.value);
-            }}
-          />
+          <input
+              className="block w-full mb-4 border rounded-md"
+              id="productPhoto"
+              onChange={(evt) => {
+                setPicture(evt.target.files[0]);
+              }}
+              type="file"
+            />
+            {userPicture && (
+              <img
+                src={URL.createObjectURL(userPicture)}
+                alt="Preview Foto perfil"
+              />
+            )}
         </div>
         <div className="text-center pt-1 mb-8 pb-1 mt-10">
           <button
@@ -140,7 +158,13 @@ export default function Register() {
             data-mdb-ripple="true"
             data-mdb-ripple-color="light"
             onClick={() => {
-              dispatch(login());
+              dispatch(
+                login(),
+                createUser({
+                  user,
+                  userPicture,
+                })
+              );
             }}
           >
             Registrarse
