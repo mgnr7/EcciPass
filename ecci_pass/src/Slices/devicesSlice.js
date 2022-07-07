@@ -3,6 +3,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 const devicesSlice = createSlice({
   name: "devices",
   initialState: {
+    userDevice: null,
     devices: null,
     devicesList: [],
   },
@@ -27,7 +28,7 @@ const devicesSlice = createSlice({
           state.devicesList = action.payload;
         }
       })
-      .addCase(getUserDevices.rejected, (state, action) => {
+      .addCase(getUserDevices.rejected, (state) => {
         state.devicesList = [];
       })
       .addCase(registerDevice.fulfilled, (state, action) => {
@@ -45,6 +46,17 @@ const devicesSlice = createSlice({
         state.success = false;
         state.devices = null;
         state.errorMessage = "Error al registrar el activo";
+      })
+      .addCase(getDeviceDetails.fulfilled, (state, action) => {
+        if (action.payload.error) {
+          state.userDevice = null;
+          state.errorMessage = action.payload.message;
+        } else {
+          state.userDevice = action.payload;
+        }
+      })
+      .addCase(getDeviceDetails.rejected, (state) => {
+        state.userDevice = null;
       });
   },
 });
@@ -123,6 +135,35 @@ export const registerDevice = createAsyncThunk(
       return {
         error: true,
         message: registerActiveData.error.message,
+      };
+    }
+  }
+);
+      
+export const getDeviceDetails = createAsyncThunk(
+  "devices/getDeviceDetails",
+  async (params, { getState }) => {
+    const state = getState();
+    const deviceFetch = await fetch(
+      "http://localhost:7500/devices/device-details",
+      {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${state.user.user.token}`,
+        },
+        body: JSON.stringify({
+          deviceId: params.deviceId,
+        }),
+      }
+    );
+    const deviceData = await deviceFetch.json();
+    if (deviceFetch.status === 200) {
+      return deviceData;
+    } else {
+      return {
+        error: true,
+        message: deviceData.error.message,
       };
     }
   }
