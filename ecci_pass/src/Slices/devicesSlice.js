@@ -41,6 +41,17 @@ const devicesSlice = createSlice({
       })
       .addCase(getDeviceDetails.rejected, (state) => {
         state.userDevice = null;
+      })
+      .addCase(deviceDelete.fulfilled, (state, action) => {
+        if (action.payload.error) {
+          state.userDevice = null;
+          state.errorMessage = action.payload.message;
+        } else {
+          state.userDevice = action.payload;
+        }
+      })
+      .addCase(deviceDelete.rejected, (state) => {
+        state.userDevice = null;
       });
   },
 });
@@ -105,6 +116,32 @@ export const getDeviceDetails = createAsyncThunk(
         body: JSON.stringify({
           deviceId: params.deviceId,
         }),
+      }
+    );
+    const deviceData = await deviceFetch.json();
+    if (deviceFetch.status === 200) {
+      return deviceData;
+    } else {
+      return {
+        error: true,
+        message: deviceData.error.message,
+      };
+    }
+  }
+);
+
+export const deviceDelete = createAsyncThunk(
+  "devices/DeviceDelete",
+  async (params, { getState }) => {
+    const state = getState();
+    const deviceFetch = await fetch(
+      `http://localhost:7500/devices/device-delete/${params.deviceId}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${state.user.user.token}`,
+        },
       }
     );
     const deviceData = await deviceFetch.json();
