@@ -1,20 +1,11 @@
 import Header from "../../Component/Header";
 import Footer from "../../Component/Footer";
-import { useParams } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
-import { getProfileDetails } from "../../Slices/userSlice";
-
+//import { useDispatch, useSelector } from "react-redux";
+//import { useEffect } from "react";
+//import userSlice, { login, register } from "../../Slices/userSlice";
+//import Register from "../Register";
 
 export default function Profile() {
-    const dispatch = useDispatch();
-    const params = useParams();
-    const userId = parseInt(params.id);
-    const userSelected = useSelector((state) => state.user.users);
-
-    useEffect(() => {
-        dispatch(getProfileDetails({ userId }));
-    }, [userId, dispatch]);
 
     return (
         <div>
@@ -32,7 +23,7 @@ export default function Profile() {
                                         Usuario
                                     </label>
                                     <p>
-                                        {userSelected.username}
+                                        ecciPassUCR
                                     </p>
                                 </div>
                                 <div className="mb-10 mt-5">
@@ -40,7 +31,7 @@ export default function Profile() {
                                         Nombre
                                     </label>
                                     <p>
-                                        {userSelected.name}
+                                        Alejandro
                                     </p>
                                 </div>
                                 <div className="mb-10 mt-5">
@@ -48,7 +39,7 @@ export default function Profile() {
                                         Apellidos
                                     </label>
                                     <p>
-                                        {userSelected.apellido}
+                                        Alvarado Estrada
                                     </p>
                                 </div>
                                 <div className="mb-10 mt-5">
@@ -56,7 +47,7 @@ export default function Profile() {
                                         Identificacion
                                     </label>
                                     <p>
-                                        {userSelected.id}
+                                        118180582
                                     </p>
                                 </div>
                                 <div className="mb-10 mt-5">
@@ -64,7 +55,7 @@ export default function Profile() {
                                         Correo electrónico
                                     </label>
                                     <p>
-                                        {userSelected.mail}
+                                        ecciPassUCR@ucr.ac.cr
                                     </p>
                                 </div>
                                 <div className="mb-1 mt-5">
@@ -72,7 +63,7 @@ export default function Profile() {
                                         Tipo de cuenta
                                     </label>
                                     <p>
-                                        {userSelected.userType}
+                                        Estudiante
                                     </p>
                                 </div>
                             </div>
