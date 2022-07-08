@@ -2,7 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Header from "../../Component/Header";
 import Footer from "../../Component/Footer";
-import { getDeviceDetails, deviceDelete } from "../../Slices/devicesSlice";
+import { getDeviceDetails } from "../../Slices/devicesSlice";
 import { useEffect } from "react";
 
 export default function DeviceDetails() {
@@ -59,12 +59,7 @@ export default function DeviceDetails() {
                 Reportar como extraviado
               </button>
 
-              <button className="btn bg-red-500 hover:bg-red-600 text-white font-bold py-5 px-8 rounded-lg lg:ml-5q" 
-              onClick={() => {
-              dispatch(
-                deviceDelete(device.deviceId)
-              );
-            }}>
+              <button className="btn bg-red-500 hover:bg-red-600 text-white font-bold py-5 px-8 rounded-lg lg:ml-5q">
                 Eliminar dispositivo
               </button>
             </div>
