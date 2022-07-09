@@ -15,8 +15,6 @@ export default function DeviceDetails() {
     dispatch(getDeviceDetails({ deviceId }));
   }, [deviceId, dispatch]);
 
-  console.log("deviceId: " + deviceId);
-
   return (
     <div>
       <Header />
