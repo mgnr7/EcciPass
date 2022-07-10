@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import Mixpanel from "../Services/mixpanel";
 
 const userSlice = createSlice({
   name: "user",
@@ -107,11 +106,6 @@ export const postLogin = createAsyncThunk(
     });
     const userData = await loginFetch.json();
     if (loginFetch.status === 200) {
-      Mixpanel.identify(userData.id);
-      Mixpanel.people.set({
-        $first_name: userData.name,
-        $email: userData.email,
-      })
       return userData;
     } else {
       return {
