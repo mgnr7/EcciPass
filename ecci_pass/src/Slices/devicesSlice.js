@@ -119,10 +119,10 @@ export const getUserDevices = createAsyncThunk(
 
 export const getDeviceDetails = createAsyncThunk(
   "devices/getDeviceDetails",
-  async (params, { getState }) => {
+  async (deviceId, { getState }) => {
     const state = getState();
     const deviceFetch = await fetch(
-      `http://localhost:7500/devices/device-details/${params.deviceId}`,
+      `http://localhost:7500/devices/device-details/${deviceId}`,
       {
         method: "GET",
         headers: {
