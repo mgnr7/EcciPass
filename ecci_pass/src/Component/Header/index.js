@@ -1,11 +1,13 @@
 import { FiSettings, FiUser } from "react-icons/fi";
 import { Link } from "react-router-dom";
-
+import { useSelector} from "react-redux";
 import { useDispatch } from "react-redux";
 import { logout } from "../../Slices/userSlice";
 
 function Header() {
   const dispatch = useDispatch();
+
+  const user = useSelector((state) => state.user.user);
 
   return (
     <nav className="bg-ucr-light-blue px-2 sm:px-4 py-2.5">
