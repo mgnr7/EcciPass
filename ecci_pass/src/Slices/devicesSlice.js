@@ -3,9 +3,17 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 const devicesSlice = createSlice({
   name: "devices",
   initialState: {
+    condition: false,
     userDevice: null,
     devices: null,
     devicesList: [],
+  },
+  reducers: {
+    cleanState: (state) => {
+      state.condition = false;
+      state.userDevice = null;
+      state.errorMessage = null;
+    },
   },
   extraReducers(builder) {
     builder
@@ -41,9 +49,27 @@ const devicesSlice = createSlice({
       })
       .addCase(getDeviceDetails.rejected, (state) => {
         state.userDevice = null;
+      })
+      .addCase(registerDevice.fulfilled, (state, action) => {
+        if (action.payload.error) {
+          state.condition = false;
+          state.userDevice = null;
+          state.errorMessage = action.payload.message;
+        } else {
+          console.log("Entro al else: ", action.payload);
+          state.condition = true;
+          state.userDevice = action.payload;
+        }
+      })
+      .addCase(registerDevice.rejected, (state) => {
+        state.condition = false;
+        state.userDevice = null;
+        state.errorMessage = "Ocurrió un error al registar el dispositivo";
       });
   },
 });
+
+export const { cleanState } = devicesSlice.actions;
 
 export const getAllDevices = createAsyncThunk(
   "devices/getAllDevices",
@@ -109,6 +135,44 @@ export const getDeviceDetails = createAsyncThunk(
     );
     const deviceData = await deviceFetch.json();
     if (deviceFetch.status === 200) {
+      return deviceData;
+    } else {
+      return {
+        error: true,
+        message: deviceData.error.message,
+      };
+    }
+  }
+);
+
+export const registerDevice = createAsyncThunk(
+  "devices/registerDevice",
+  async ({ device, picture }, { getState }) => {
+    const state = getState();
+    console.log("Entro al llamado registerDevice");
+    const formData = new FormData();
+    formData.append("file", picture);
+    const uploadFileFetch = await fetch("http://localhost:7500/upload", {
+      method: "POST",
+      body: formData,
+    });
+    const uploadFileData = await uploadFileFetch.json();
+    device.imageUrl = uploadFileData.url;
+
+    const registerDeviceFetch = await fetch(
+      "http://localhost:7500/devices/register-device",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${state.user.user.token}`,
+        },
+        body: JSON.stringify(device),
+      }
+    );
+
+    const deviceData = await registerDeviceFetch.json();
+    if (registerDeviceFetch.status === 200) {
       return deviceData;
     } else {
       return {
