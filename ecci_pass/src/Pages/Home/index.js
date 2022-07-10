@@ -25,7 +25,7 @@ export default function Home() {
         </div>
         <div className="float-right">
           <p className="text-lg">
-            {user && user.userName ? ` ${user.userName}` : "Nombre de usuario"}
+            {user && user.name ? `${user.name}` : "Bienvenid@"}
           </p>
         </div>
       </div>

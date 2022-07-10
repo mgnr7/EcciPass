@@ -15,6 +15,7 @@ export default function DeviceDetails() {
   }, [deviceId, dispatch]);
 
   const device = useSelector((state) => state.devices.userDevice);
+  const user = useSelector((state) => state.user.user);
 
   return (
     <div>
@@ -58,10 +59,11 @@ export default function DeviceDetails() {
                 <button className="btn bg-sky-600 hover:bg-ucr-blue text-white font-bold py-5 px-8 rounded-lg lg:mx-5">
                   Reportar como extraviado
                 </button>
-
-                <button className="btn bg-red-500 hover:bg-red-600 text-white font-bold py-5 px-8 rounded-lg lg:ml-5q">
-                  Eliminar dispositivo
-                </button>
+                {user.accountType !== "guarda" && (
+                  <button className="btn bg-red-500 hover:bg-red-600 text-white font-bold py-5 px-8 rounded-lg lg:ml-5q">
+                    Eliminar dispositivo
+                  </button>
+                )}
               </div>
             </div>
           </div>
