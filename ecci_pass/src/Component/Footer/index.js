@@ -1,6 +1,6 @@
 function Footer() {
   return (
-    <footer className="dark:bg-gray-800 text-white border-t-4 block absolute bottom-0 inset-x-0 p-6 bg-white shadow md:flex md:items-center md:justify-between">
+    <footer className="dark:bg-gray-800 text-white border-t-4 block relative bottom-0 inset-x-0 p-6 bg-white shadow md:flex md:items-center md:justify-between">
       <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
         ©{" "}
         <a href="https://www.ecci.ucr.ac.cr/" className="hover:underline">

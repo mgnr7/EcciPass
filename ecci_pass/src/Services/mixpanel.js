@@ -26,6 +26,7 @@ const Mixpanel = {
         OPEN_DEVICE_QR: "OPEN_DEVICE_QR",
         GO_TO_PROFILE: "GO_TO_PROFILE",
         USER_LOGIN_ECCIPASS: "USER_LOGIN_ECCIPASS",
+        USER_HELP_ECCIPASS: "USER_HELP_ECCIPASS",
     }
 };
 
