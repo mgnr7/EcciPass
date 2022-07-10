@@ -93,6 +93,7 @@ export default function Profile() {
             </label>
 
             <div className="flex justify-center items-center w-full">
+              
               <div className="relative w-52 h-52 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
                 <svg
                   className="absolute w-52 h-52 text-gray-400 -left-1"
@@ -107,6 +108,7 @@ export default function Profile() {
                   ></path>
                 </svg>
               </div>
+
             </div>
           </div>
         </div>
