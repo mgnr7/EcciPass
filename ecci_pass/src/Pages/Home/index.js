@@ -78,9 +78,12 @@ export default function Home() {
                   </div>
 
                   <div className="w-full py-4 px-6 text-gray-800 flex flex-col items-center">
-                    <button className="lg:w-3/4 lg:mb-8 lg:mt-8 bg-ucr-green hover:bg-green-600 text-white rounded-lg px-4 py-4">
+                    <Link
+                      className="lg:w-3/4 lg:mb-8 lg:mt-8 bg-ucr-green hover:bg-green-600 text-white text-center rounded-lg px-4 py-4"
+                      to={`/generate-voucher/${d.deviceId}`}
+                    >
                       Generar Comprobante
-                    </button>
+                    </Link>
                     <Link
                       className="btn lg:w-3/4 lg:mt-8 lg:mb-8 bg-ucr-orange hover:bg-orange-600 text-white text-center rounded-lg px-4 py-4"
                       to={`/device-details/${d.deviceId}`}

@@ -92,19 +92,16 @@ export const getUserDevices = createAsyncThunk(
 
 export const getDeviceDetails = createAsyncThunk(
   "devices/getDeviceDetails",
-  async (params, { getState }) => {
+  async (deviceId, { getState }) => {
     const state = getState();
     const deviceFetch = await fetch(
-      "http://localhost:7500/devices/device-details",
+      `http://localhost:7500/devices/device-details/${deviceId}`,
       {
-        method: "POST",
+        method: "GET",
         headers: {
           "Content-type": "application/json",
           Authorization: `Bearer ${state.user.user.token}`,
         },
-        body: JSON.stringify({
-          deviceId: params.deviceId,
-        }),
       }
     );
     const deviceData = await deviceFetch.json();
