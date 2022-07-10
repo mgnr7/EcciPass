@@ -21,13 +21,14 @@ function Header() {
             </div>
           </div>
           <div className="float-left mt-1 mb-1">
-            <Link
-              className="block pr-10 pl-10 text-black "
-              onClick={() => {Mixpanel.track(Mixpanel.TYPES.GO_TO_PROFILE);}}
-              to={`/profile/${user.userId}`}
-            >
-              Perfil
-            </Link>
+            {user.accountType === "comun" && (
+              <Link
+                to={`/profile/${user.userId}`}
+                className="block pr-10 pl-10 text-black "
+              >
+                Perfil
+              </Link>
+            )}
           </div>
           <div className="float-right mt-1 mb-1">
             <div className="border-black border-t-0 border-l-2 border-r-0 border-b-0">
