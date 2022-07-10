@@ -5,6 +5,7 @@ import { FiCheck, FiClipboard } from "react-icons/fi";
 import Header from "../../Component/Header";
 import Footer from "../../Component/Footer";
 import { getUserDevices } from "../../Slices/devicesSlice";
+import Mixpanel from "../../Services/mixpanel";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -44,7 +45,7 @@ export default function Home() {
                 className="bg-sky-600 hover:bg-ucr-blue text-white rounded-lg px-4 py-2"
                 to="/registerDevice"
               >
-                Registrar dispositivo
+                Agregar dispositivo
               </Link>
             </div>
           </div>
@@ -86,12 +87,14 @@ export default function Home() {
                   <div className="w-full py-4 px-6 text-gray-800 flex flex-col items-center">
                     <Link
                       className="lg:w-3/4 lg:mb-8 lg:mt-8 bg-ucr-green hover:bg-green-600 text-white text-center rounded-lg px-4 py-4"
+                      onClick={() => {Mixpanel.track(Mixpanel.TYPES.OPEN_DEVICE_QR);}}
                       to={`/generate-voucher/${d.deviceId}`}
                     >
                       Generar Comprobante
                     </Link>
                     <Link
                       className="btn lg:w-3/4 lg:mt-8 lg:mb-8 bg-ucr-orange hover:bg-orange-600 text-white text-center rounded-lg px-4 py-4"
+                      onClick={() => {Mixpanel.track(Mixpanel.TYPES.OPEN_DEVICE_DETAILS);}}
                       to={`/device-details/${d.deviceId}`}
                     >
                       Más detalles
