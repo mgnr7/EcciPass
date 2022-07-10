@@ -14,9 +14,10 @@ export default function DeviceDetails() {
     dispatch(getDeviceDetails(deviceId));
   }, [deviceId, dispatch]);
 
+
   const device = useSelector((state) => state.devices.userDevice);
   const user = useSelector((state) => state.user.user);
-
+  
   return (
     <div>
       <Header />
