@@ -1,13 +1,11 @@
 import { FiSettings, FiUser } from "react-icons/fi";
 import { Link } from "react-router-dom";
-//import { useSelector} from "react-redux";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../Slices/userSlice";
 
 function Header() {
   const dispatch = useDispatch();
-
-  //const user = useSelector((state) => state.user.user);
+  const user = useSelector((state) => state.user.user);
 
   return (
     <nav className="bg-ucr-light-blue px-2 sm:px-4 py-2.5">
@@ -22,9 +20,12 @@ function Header() {
             </div>
           </div>
           <div className="float-left mt-1 mb-1">
-              <a href="/profile" className="block pr-10 pl-10 text-black ">
-                Perfil
-              </a>
+            <Link
+              to={`/profile/${user.userId}`}
+              className="block pr-10 pl-10 text-black "
+            >
+              Perfil
+            </Link>
           </div>
           <div className="float-right mt-1 mb-1">
             <div className="border-black border-t-0 border-l-2 border-r-0 border-b-0">

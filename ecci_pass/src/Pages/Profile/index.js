@@ -21,8 +21,8 @@ export default function Profile() {
     <div>
       <Header />
       {user ? (
-        <div class="grid grid-cols-5 gap-0">
-          <div class="col-span-3 ">
+        <div className="grid grid-cols-5 gap-0">
+          <div className="col-span-3 ">
             <div className="flow-root w-100 text-gray-700 px-14 py-2 md:flex-row">
               <div className="mb-8">
                 <h1 className="text-4xl mt-6"> Información sobre usuario </h1>
@@ -32,16 +32,16 @@ export default function Profile() {
                   <div className="mb-10">
                     <label
                       className="block text-gray-700 text-xl font-bold mb-2"
-                      for="brand"
+                      htmlFor="brand"
                     >
                       Usuario
                     </label>
-                    <p>{user.username}</p>
+                    <p>{user.user}</p>
                   </div>
                   <div className="mb-10 mt-5">
                     <label
                       className="block text-gray-700 text-xl font-bold mb-2"
-                      for="brand"
+                      htmlFor="brand"
                     >
                       Nombre
                     </label>
@@ -50,25 +50,25 @@ export default function Profile() {
                   <div className="mb-10 mt-5">
                     <label
                       className="block text-gray-700 text-xl font-bold mb-2"
-                      for="brand"
+                      htmlFor="brand"
                     >
                       Apellido
                     </label>
-                    <p>{user.apellido}</p>
+                    <p>{user.lastName}</p>
                   </div>
                   <div className="mb-10 mt-5">
                     <label
                       className="block text-gray-700 text-xl font-bold mb-2"
-                      for="brand"
+                      htmlFor="brand"
                     >
                       Identificacion
                     </label>
-                    <p>{user.id}</p>
+                    <p>{user.Identificacion}</p>
                   </div>
                   <div className="mb-10 mt-5">
                     <label
                       className="block text-gray-700 text-xl font-bold mb-2"
-                      for="brand"
+                      htmlFor="brand"
                     >
                       Correo electrónico
                     </label>
@@ -77,38 +77,37 @@ export default function Profile() {
                   <div className="mb-1 mt-5">
                     <label
                       className="block text-gray-700 text-xl font-bold mb-2"
-                      for="brand"
+                      htmlFor="brand"
                     >
                       Tipo de cuenta
                     </label>
-                    <p>{user.userType}</p>
+                    <p>{user.AccountType}</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="text-center pt-60 mb-6 pb-1 mt-2 mr-2 ml-20">
+          <div className="text-center pt-60 mb-6 pb-1 mt-2 mr-2 ml-20">
             <label className="block text-gray-700 text-xl font-bold mb-2">
               Imágen de perfil
             </label>
-            
-            <div class="flex justify-center items-center w-full">
-              <div class="relative w-52 h-52 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
+
+            <div className="flex justify-center items-center w-full">
+              <div className="relative w-52 h-52 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
                 <svg
-                  class="absolute w-52 h-52 text-gray-400 -left-1"
+                  className="absolute w-52 h-52 text-gray-400 -left-1"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                     d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                    clip-rule="evenodd"
+                    clipRule="evenodd"
                   ></path>
                 </svg>
               </div>
             </div>
-            
           </div>
         </div>
       ) : (
