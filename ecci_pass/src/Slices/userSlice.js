@@ -72,6 +72,21 @@ const userSlice = createSlice({
       })
       .addCase(getUserDetails.rejected, (state) => {
         state.userProfile = null;
+      })
+      .addCase(registerUser.fulfilled, (state, action) => {
+        if (action.payload.error) {
+          state.condition = false;
+          state.userProfile = null;
+          state.errorMessage = action.payload.message;
+        } else {
+          state.condition = true;
+          state.userProfile = action.payload;
+        }
+      })
+      .addCase(registerUser.rejected, (state) => {
+        state.condition = false;
+        state.userProfile = null;
+        state.errorMessage = "Ocurrió un error al registar el usuario nuevo";
       });
   },
 });
@@ -148,6 +163,42 @@ export const getUserDetails = createAsyncThunk(
       return {
         error: true,
         message: userProfileData.error.message,
+      };
+    }
+  }
+);
+
+export const registerUser = createAsyncThunk(
+  "devices/registerUser",
+  async ({ newUser, picture }, { getState }) => {
+    //const state = getState();
+    const formData = new FormData();
+    formData.append("file", picture);
+    const uploadFileFetch = await fetch("http://localhost:7500/upload", {
+      method: "POST",
+      body: formData,
+    });
+    const uploadFileData = await uploadFileFetch.json();
+    newUser.imageUrl = uploadFileData.url;
+
+    const registerUserFetch = await fetch(
+      "http://localhost:7500/users/register",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newUser),
+      }
+    );
+
+    const newUserData = await registerUserFetch.json();
+    if (registerUserFetch.status === 200) {
+      return newUserData;
+    } else {
+      return {
+        error: true,
+        message: newUserData.error.message,
       };
     }
   }
