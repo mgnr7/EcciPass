@@ -48,7 +48,7 @@ export default function RegisterDevice() {
             <div className="col-span-4">
               <div className="flow-root w-100 text-gray-700 px-14 py-2 md:flex-row">
                 <div className="mb-8">
-                  <h1 className="text-4xl mt-6"> Registro activo nuevo </h1>
+                  <h1 className="text-4xl mt-14 mb-16"> Registro activo nuevo </h1>
                 </div>
                 <div className="w-11/12">
                   <form className="bg-white shadow-lg rounded px-8 pt-6 pb-10 mb-8 border-2">
