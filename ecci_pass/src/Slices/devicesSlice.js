@@ -149,7 +149,6 @@ export const registerDevice = createAsyncThunk(
   "devices/registerDevice",
   async ({ device, picture }, { getState }) => {
     const state = getState();
-    console.log("Entro al llamado registerDevice");
     const formData = new FormData();
     formData.append("file", picture);
     const uploadFileFetch = await fetch("http://localhost:7500/upload", {
