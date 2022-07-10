@@ -2,6 +2,7 @@ import { FiSettings, FiUser } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../Slices/userSlice";
+import Mixpanel from "../../Services/mixpanel";
 
 function Header() {
   const dispatch = useDispatch();
@@ -21,8 +22,9 @@ function Header() {
           </div>
           <div className="float-left mt-1 mb-1">
             <Link
-              to={`/profile/${user.userId}`}
               className="block pr-10 pl-10 text-black "
+              onClick={() => {Mixpanel.track(Mixpanel.TYPES.GO_TO_PROFILE);}}
+              to={`/profile/${user.userId}`}
             >
               Perfil
             </Link>
