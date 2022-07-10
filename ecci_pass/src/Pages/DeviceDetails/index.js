@@ -1,9 +1,9 @@
 import { Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
 import Header from "../../Component/Header";
 import Footer from "../../Component/Footer";
 import { getDeviceDetails } from "../../Slices/devicesSlice";
-import { useEffect } from "react";
 
 export default function DeviceDetails() {
   const dispatch = useDispatch();
