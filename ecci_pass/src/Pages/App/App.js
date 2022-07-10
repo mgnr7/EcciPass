@@ -8,6 +8,7 @@ import DeviceDetails from "../DeviceDetails";
 import PrivateRoute from "../../Component/PrivateRoute";
 import GenerateVoucher from "../GenerateVoucher";
 import RegisterDevice from "../RegisterDevice";
+import AdminHome from "../Admin";
 
 function App() {
   return (
@@ -17,12 +18,13 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="device-details/:id" element={<DeviceDetails />} />
           <Route path="generate-voucher/:id" element={<GenerateVoucher />} />
+          <Route path="admin-home" element={<AdminHome />} />
+          <Route path="profile/:id" element={<Profile />} />
+          <Route path="registerDevice" element={<RegisterDevice />} />
         </Route>
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
-        <Route path="profile/:id" element={<Profile />} />
         <Route path="help" element={<Help />} />
-        <Route path="registerDevice" element={<RegisterDevice />} />
       </Routes>
     </BrowserRouter>
   );
