@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { cleanState, registerDevice } from "../../Slices/devicesSlice";
+import Mixpanel from "../../Services/mixpanel";
 
 export default function RegisterDevice() {
   const [picture, setPicture] = useState(null);
@@ -207,6 +208,7 @@ export default function RegisterDevice() {
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-5 rounded focus:outline-none focus:shadow-outline"
               type="button"
               onClick={() => {
+                Mixpanel.track(Mixpanel.TYPES.OPEN_ADD_DEVICE_BUTTON);
                 dispatch(registerDevice({ device, picture }));
               }}
             >

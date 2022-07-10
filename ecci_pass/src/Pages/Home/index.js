@@ -5,6 +5,7 @@ import { FiCheck, FiClipboard } from "react-icons/fi";
 import Header from "../../Component/Header";
 import Footer from "../../Component/Footer";
 import { getUserDevices } from "../../Slices/devicesSlice";
+//import Mixpanel from "../../Services/mixpanel";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -38,7 +39,7 @@ export default function Home() {
                 className="bg-sky-600 hover:bg-ucr-blue text-white rounded-lg px-4 py-2"
                 to="/registerDevice"
               >
-                Registrar dispositivo
+                Agregar dispositivo
               </Link>
             </div>
           </div>
