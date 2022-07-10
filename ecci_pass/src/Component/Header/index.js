@@ -23,8 +23,9 @@ function Header() {
           <div className="float-left mt-1 mb-1">
             {user.accountType === "comun" && (
               <Link
-                to={`/profile/${user.userId}`}
                 className="block pr-10 pl-10 text-black "
+                onClick={() => {Mixpanel.track(Mixpanel.TYPES.GO_TO_PROFILE);}}
+                to={`/profile/${user.userId}`}
               >
                 Perfil
               </Link>
