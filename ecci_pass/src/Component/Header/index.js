@@ -2,6 +2,8 @@ import { FiSettings, FiUser } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../Slices/userSlice";
+import Mixpanel from "../../Services/mixpanel";
+
 
 function Header() {
   const dispatch = useDispatch();
@@ -22,18 +24,23 @@ function Header() {
           <div className="float-left mt-1 mb-1">
             {user.accountType === "comun" && (
               <Link 
-                className="block pr-10 pl-10 text-black "
-                to={`/profile/${user.userId}`}
+              className="block pr-10 pl-10 text-black "
+              onClick={() => {Mixpanel.track(Mixpanel.TYPES.GO_TO_PROFILE);}}
+              to={`/profile/${user.userId}`}
               >
                 Perfil
               </Link>
             )}
           </div>
           <div className="float-right mt-1 mb-1">
-            <div className="border-black border-t-0 border-l-2 border-r-0 border-b-0">
-              <a href="/help" className="block pr-10 pl-10 text-black ">
-                Ayuda
-              </a>
+          <div className="border-black border-t-0 border-l-2 border-r-0 border-b-0">
+            <Link
+              className="block pr-10 pl-10 text-black "
+              onClick={() => {Mixpanel.track(Mixpanel.TYPES.USER_HELP_ECCIPASS);}}
+              to="/help"
+            >
+              Ayuda 
+            </Link>
             </div>
           </div>
         </div>
