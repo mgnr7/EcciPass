@@ -38,7 +38,7 @@ function Header() {
               onClick={() => {Mixpanel.track(Mixpanel.TYPES.USER_HELP_ECCIPASS);}}
               to="/help"
             >
-              Ayuda
+              Ayuda 
             </Link>
             </div>
           </div>
