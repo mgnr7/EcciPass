@@ -21,7 +21,7 @@ export default function GenerateVoucher() {
     <div>
       <Header />
       {device && (
-        <div className="container mx-auto h-screen mb-12">
+        <div className="container mx-auto h-full mb-40">
           <div className="h-5/6 p-10">
             <div className="w-full flex flex-col md:flex-row">
               <div className="md:w-2/3 lg:w-3/4">

@@ -22,7 +22,7 @@ export default function HelpSection() {
             </p>
           </div>
           <h2 className="text-4xl mt-12">Manual de uso para el usuario</h2>
-          <div className="text-justify mt-10 px-28">
+          <div className="text-justify mt-10 px-28 mb-32">
             <p class="text-xl">
               1. Inicie sesión o regístrese <br></br> <br></br> 2. Seleccione la
               opción de "Registrar Dispositivo" <br></br> <br></br> 3. Ingrese

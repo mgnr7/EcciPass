@@ -27,12 +27,12 @@ export default function Home() {
     <div className="h-screen">
       <Header />
       <div className="flow-root w-100 text-gray-700 px-14 py-2 md:flex-row">
-        <div className="float-left">
+        <div className="float-left mt-8 ml-36">
           <p className="text-4xl">Activos electrónicos registrados</p>
         </div>
-        <div className="float-right">
+        <div className="float-right mr-24">
           <p className="text-lg">
-            {user && user.name ? `${user.name}` : "Bienvenid@"}
+            {user && user.name ? `Bienvenido ${user.name}` : "Bienvenid@"}
           </p>
         </div>
       </div>
@@ -42,7 +42,7 @@ export default function Home() {
           <div className="flow-root text-gray-700 px-14 py-2">
             <div className="float-right">
               <Link
-                className="bg-sky-600 hover:bg-ucr-blue text-white rounded-lg px-4 py-2"
+                className="bg-sky-600 hover:bg-ucr-blue text-white rounded-lg px-4 py-4"
                 to="/registerDevice"
               >
                 Registrar dispositivo

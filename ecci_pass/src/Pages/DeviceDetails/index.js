@@ -22,7 +22,7 @@ export default function DeviceDetails() {
     <div>
       <Header />
       {device ? (
-        <div className="container mx-auto h-screen">
+        <div className="container mx-auto h-full mb-24">
           <div className="h-5/6 p-10">
             <div className="w-full flex flex-col md:flex-row">
               <div className="md:w-2/3 lg:w-3/4">

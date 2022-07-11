@@ -22,7 +22,7 @@ export default function Profile() {
       <Header />
       {user ? (
         <div className="grid grid-cols-5 gap-0">
-          <div className="col-span-3 ">
+          <div className="col-span-3 mb-6">
             <div className="flow-root w-100 text-gray-700 px-14 py-2 md:flex-row">
               <div className="mb-8">
                 <h1 className="text-4xl mt-6"> Información sobre usuario </h1>
