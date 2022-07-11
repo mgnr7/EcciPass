@@ -94,16 +94,19 @@ export const { logout, login, register } = userSlice.actions;
 export const postLogin = createAsyncThunk(
   "usuarios/postLogin",
   async (credentials) => {
-    const loginFetch = await fetch("http://localhost:7500/users/login", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({
-        email: credentials.username,
-        password: credentials.password,
-      }),
-    });
+    const loginFetch = await fetch(
+      `${process.env.REACT_APP_API_URL}/users/login`,
+      {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          email: credentials.username,
+          password: credentials.password,
+        }),
+      }
+    );
     const userData = await loginFetch.json();
     if (loginFetch.status === 200) {
       return userData;
@@ -121,7 +124,7 @@ export const getUserProfile = createAsyncThunk(
   async (params, { getState }) => {
     const state = getState();
     const profileFetch = await fetch(
-      "http://localhost:7500/users/user-profile",
+      `${process.env.REACT_APP_API_URL}/users/user-profile`,
       {
         headers: {
           Authorization: `Bearer ${state.user.user.token}`,
@@ -137,7 +140,7 @@ export const getUserProfile = createAsyncThunk(
         message: profileData.error.message,
       };
     }
-  } 
+  }
 );
 
 export const getUserDetails = createAsyncThunk(
@@ -145,7 +148,7 @@ export const getUserDetails = createAsyncThunk(
   async (userId, { getState }) => {
     const state = getState();
     const userProfileFetch = await fetch(
-      `http://localhost:7500/users/user-details/${userId}`,
+      `${process.env.REACT_APP_API_URL}/users/user-details/${userId}`,
       {
         method: "GET",
         headers: {
@@ -172,15 +175,18 @@ export const registerUser = createAsyncThunk(
     //const state = getState();
     const formData = new FormData();
     formData.append("file", picture);
-    const uploadFileFetch = await fetch("http://localhost:7500/upload", {
-      method: "POST",
-      body: formData,
-    });
+    const uploadFileFetch = await fetch(
+      `${process.env.REACT_APP_API_URL}/upload`,
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
     const uploadFileData = await uploadFileFetch.json();
     newUser.imageUrl = uploadFileData.url;
 
     const registerUserFetch = await fetch(
-      "http://localhost:7500/users/register",
+      `${process.env.REACT_APP_API_URL}/users/register`,
       {
         method: "POST",
         headers: {
@@ -201,6 +207,5 @@ export const registerUser = createAsyncThunk(
     }
   }
 );
-
 
 export default userSlice.reducer;

@@ -75,11 +75,14 @@ export const getAllDevices = createAsyncThunk(
   "devices/getAllDevices",
   async (params, { getState }) => {
     const state = getState();
-    const devicesFetch = await fetch("http://localhost:7500/devices", {
-      headers: {
-        Authorization: `Bearer ${state.user.user.token}`,
-      },
-    });
+    const devicesFetch = await fetch(
+      `${process.env.REACT_APP_API_URL}/devices`,
+      {
+        headers: {
+          Authorization: `Bearer ${state.user.user.token}`,
+        },
+      }
+    );
     const devicesData = await devicesFetch.json();
     if (devicesFetch.status === 200) {
       return devicesData;
@@ -97,7 +100,7 @@ export const getUserDevices = createAsyncThunk(
   async (params, { getState }) => {
     const state = getState();
     const devicesFetch = await fetch(
-      "http://localhost:7500/devices/user-devices",
+      `${process.env.REACT_APP_API_URL}/devices/user-devices`,
       {
         headers: {
           "Content-type": "application/json",
@@ -122,7 +125,7 @@ export const getDeviceDetails = createAsyncThunk(
   async (deviceId, { getState }) => {
     const state = getState();
     const deviceFetch = await fetch(
-      `http://localhost:7500/devices/device-details/${deviceId}`,
+      `${process.env.REACT_APP_API_URL}/devices/device-details/${deviceId}`,
       {
         method: "GET",
         headers: {
@@ -149,15 +152,18 @@ export const registerDevice = createAsyncThunk(
     const state = getState();
     const formData = new FormData();
     formData.append("file", picture);
-    const uploadFileFetch = await fetch("http://localhost:7500/upload", {
-      method: "POST",
-      body: formData,
-    });
+    const uploadFileFetch = await fetch(
+      `${process.env.REACT_APP_API_URL}/upload`,
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
     const uploadFileData = await uploadFileFetch.json();
     device.imageUrl = uploadFileData.url;
 
     const registerDeviceFetch = await fetch(
-      "http://localhost:7500/devices/register-device",
+      `${process.env.REACT_APP_API_URL}/devices/register-device`,
       {
         method: "POST",
         headers: {

@@ -44,7 +44,7 @@ export default function GenerateVoucher() {
               <div className="lg:flex lg:w-2/6 lg:mt-12 lg:py-2 lg:items-center lg:justify-center lg:border-2 lg:border-black lg:rounded-lg mb-5">
                 {/*Cambiar cuando se haya echo el deploy*/}
                 <QRCode
-                  value={`http://localhost:3000/device-details/${deviceId}`}
+                  value={`${process.env.REACT_APP_WEB_URL}/device-details/${deviceId}`}
                 />
               </div>
             </div>
